@@ -14,6 +14,23 @@
  * @package WordPress
  */
 
+define('APP_ROOT', dirname(__DIR__));
+
+if (file_exists(APP_ROOT . '/config/env/local.php')) {
+  require_once APP_ROOT . '/config/env/local.php';
+}
+else {
+  require APP_ROOT . '/config/env/' . APP_ENV . '.php';
+}
+
+define('WP_HOME', 'http://wordpress.dev');
+define('WP_SITEURL', WP_HOME . '/site/');
+
+define('WP_CONTENT_DIR', APP_ROOT . '/public/content');
+define('WP_CONTENT_URL', WP_HOME. '/content');
+
+define('WP_DEBUG', true);
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'database_name_here');

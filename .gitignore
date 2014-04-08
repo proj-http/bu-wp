@@ -1,1 +1,5 @@
 /vendor/
+/config/env/local.php
+
+.DS_Store
+._*
