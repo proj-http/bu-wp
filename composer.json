@@ -9,5 +9,10 @@
             "name": "Christian de Botton",
             "email": "debotton@brooklynunited.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "app": ""
+        }
+    }
 }
