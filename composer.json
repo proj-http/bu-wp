@@ -1,0 +1,13 @@
+{
+    "name": "brooklyn-united/word-press",
+    "require": {
+        "slim/slim": "*",
+        "twig/twig": "*"
+    },
+    "authors": [
+        {
+            "name": "Christian de Botton",
+            "email": "debotton@brooklynunited.com"
+        }
+    ]
+}
