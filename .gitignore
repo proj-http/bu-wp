@@ -1,5 +1,7 @@
 /vendor/
 /config/env/local.php
+node_modules
+bower_components
 
 .DS_Store
 ._*
