@@ -5,7 +5,11 @@ require('site/wp-blog-header.php');
 
 $app = new \Slim\Slim;
 $twig_loader = new Twig_Loader_Filesystem(dirname(__DIR__) . '/app/templates');
-$template = new Twig_Environment($twig_loader);
+
+$app->container->singleton('twig', function() use($twig_loader)
+{
+  return new Twig_Environment($twig_loader);
+});
 
 require_once(APP_ROOT . '/app/routes.php');
 
