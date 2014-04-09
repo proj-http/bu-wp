@@ -3,6 +3,11 @@ exports.config = {
     watched: ['brunch', 'envs', 'bower_components', 'test', 'app', 'public'],
     public: 'public/build'
   },
+  modules: {
+    nameCleaner: function(path) {
+      return path.replace(/^brunch\//, '');
+    }
+  },
   files: {
     javascripts: {
       joinTo: {
