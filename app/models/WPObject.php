@@ -18,8 +18,6 @@ class WPObject {
                 return (substr($k, 0, 5) === "post_") ? substr($k, 5) : $k;
             }
         ]);
-
-        $this->content = apply_filters('attr_doug', $this->content);
     }
 
 
