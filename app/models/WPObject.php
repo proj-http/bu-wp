@@ -107,6 +107,7 @@ class WPObject {
 
         return $this;
     }
+
     protected function extract($properties, $modifiers = [], $ifExists = true) {
         foreach ((array) $properties as $key => $value) {
 
