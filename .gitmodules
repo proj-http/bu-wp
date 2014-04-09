@@ -1,3 +1,6 @@
 [submodule "public/site"]
 	path = public/site
 	url = git@github.com:WordPress/WordPress.git
+[submodule "public/content/plugins/advanced-custom-fields"]
+	path = public/content/plugins/advanced-custom-fields
+	url = git@github.com:elliotcondon/acf.git
