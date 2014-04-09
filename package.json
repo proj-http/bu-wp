@@ -1,0 +1,29 @@
+{
+  "name": "bu-wp",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brooklynunited/bu-wp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brooklynunited/bu-wp/issues"
+  },
+  "homepage": "https://github.com/brooklynunited/bu-wp",
+  "dependencies": {
+    "javascript-brunch": "~1.7.1",
+    "clean-css-brunch": "~1.7.1",
+    "stylus-brunch": "~1.8.0",
+    "uglify-js-brunch": "~1.7.7",
+    "auto-reload-brunch": "~1.7.3"
+  }
+}
