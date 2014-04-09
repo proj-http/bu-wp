@@ -2,7 +2,8 @@
     "name": "brooklyn-united/word-press",
     "require": {
         "slim/slim": "*",
-        "twig/twig": "*"
+        "twig/twig": "*",
+        "phpunit/phpunit": "*"
     },
     "authors": [
         {
