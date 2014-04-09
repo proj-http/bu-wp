@@ -3,5 +3,10 @@
 {% block title %}Home | Brooklyn United{% endblock %}
 
 {% block content %}
-  Home page.
+  <h1>Brooklyn United Wordpress Scaffold</h1>
+  <ul>
+    {% for post in posts %}
+      <li><a href="/posts/{{ post.ID }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}

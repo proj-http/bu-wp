@@ -1,0 +1,8 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}{{ post.title }} | Brooklyn United{% endblock %}
+
+{% block content %}
+  <h1><a href="/">Brooklyn United</a> - {{ post.title }}</h1>
+  {{ post.content }}
+{% endblock %}

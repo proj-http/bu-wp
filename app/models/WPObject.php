@@ -2,7 +2,7 @@
 
 class WPObject {
 
-  use \App\Traits\PropertyExtract;
+  // use \App\Traits\PropertyExtract;
 
   public $ID;
   public $title;
@@ -26,7 +26,7 @@ class WPObject {
      * @param  mixed $args Numeric ID or array of arguments
      * @return mixed       Single WP object or array of WP objects
      */
-    public static function find($args) {
+    public static function find($args = []) {
         if (is_numeric($args)) {
             return static::find_one($args);
 
@@ -107,5 +107,20 @@ class WPObject {
 
         return $this;
     }
+    protected function extract($properties, $modifiers = [], $ifExists = true) {
+        foreach ((array) $properties as $key => $value) {
 
+            if (!empty($modifiers['key']) && is_callable($modifiers['key'])) {
+                $key = $modifiers['key']($key, $value);
+            }
+            if (!empty($modifiers['value']) && is_callable($modifiers['value'])) {
+                $value = $modifiers['value']($key, $value);
+            }
+
+
+            if (!$ifExists || ($ifExists && property_exists($this, $key))) {
+                $this->$key = $value;
+            }
+        }
+    }
 }
