@@ -5,20 +5,19 @@ class WPObject {
   use \App\Traits\PropertyExtract;
 
   public $ID;
-    public $title;
-    public $content;
-    public $status;
-    public $type;
-    public $date;
+  public $title;
+  public $content;
+  public $status;
+  public $type;
+  public $date;
 
   public function __construct($wp_post_array) {
-
     $this->extract($wp_post_array, [
-            'key' => function ($k, $v) {
-                return (substr($k, 0, 5) === "post_") ? substr($k, 5) : $k;
-            }
-        ]);
-    }
+        'key' => function ($k, $v) {
+            return (substr($k, 0, 5) === "post_") ? substr($k, 5) : $k;
+        }
+    ]);
+  }
 
 
     /**
@@ -28,13 +27,10 @@ class WPObject {
      * @return mixed       Single WP object or array of WP objects
      */
     public static function find($args) {
-
         if (is_numeric($args)) {
-
             return static::find_one($args);
 
         } else if (is_array($args)) {
-
             return static::find_many($args);
         }
     }
@@ -46,7 +42,6 @@ class WPObject {
      * @return WPObject
      */
     protected static function find_one($id) {
-
         $object = get_post($id);
         $wpobject = new static($object);
 
