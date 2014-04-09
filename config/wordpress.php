@@ -52,9 +52,9 @@ define('WPLANG', '');
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(__FILE__) . '/');
+  define('ABSPATH', dirname(dirname(__FILE__)) . '/public/site/');
 
 /** Sets up WordPress vars and included files. */
 if (!class_exists('WP_CLI\Runner')) {
-  require_once(ABSPATH . 'wp-settings.php');
+  require_once(APP_ROOT . '/public/site/wp-settings.php');
 }

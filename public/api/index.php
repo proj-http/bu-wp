@@ -1,8 +1,9 @@
 <?php
 
-require_once '../../config/wordpress.php';
-header("Content-type: application/json");
+require '../../config/wordpress.php';
 
 $api = new \Slim\Slim();
 
-require_once '../../app/api.php';
+require '../../app/api.php';
+
+$api->run();
