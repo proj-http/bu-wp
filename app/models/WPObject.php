@@ -10,6 +10,7 @@ class WPObject {
   public $status;
   public $type;
   public $date;
+  public $name;
 
   public function __construct($wp_post_array) {
     $this->extract($wp_post_array, [

@@ -8,8 +8,8 @@ $app->get('/', function() use ($template)
   echo $template->render('index.html.twig', ['posts' => $posts]);
 });
 
-$app->get('/posts/:post_id', function($post_id) use ($template)
+$app->get('/:post_name', function($post_name) use ($template)
 {
-  $post = WPObject::find($post_id);
+  $post = WPObject::find(['name' => $post_name])[0];
   echo $template->render('post.html.twig', ['post' => $post]);
 });
