@@ -12,7 +12,7 @@ exports.config = {
     },
     stylesheets: {
       joinTo: {
-        'stylesheets/app.cs': /^brunch/
+        'stylesheets/app.css': /^(bower_components|brunch)/
       }
     },
     templates: {
