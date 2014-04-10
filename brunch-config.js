@@ -1,6 +1,12 @@
 exports.config = {
+  plugins: {
+    react: {
+      autoIncludeCommentBlock: true,
+      harmony: true
+    }
+  },
   paths: {
-    watched: ['brunch', 'envs', 'bower_components', 'test', 'app', 'public'],
+    watched: ['brunch', 'envs', 'test'],
     public: 'public/build'
   },
   modules: {
@@ -12,7 +18,7 @@ exports.config = {
     javascripts: {
       joinTo: {
         'javascripts/app.js': /^brunch/,
-        'javascripts/vendor.js': /^(bower_components|vendor)/
+        'javascripts/vendor.js': /^(bower_components)/
       }
     },
     stylesheets: {
