@@ -25,7 +25,6 @@
     "stylus-brunch": "~1.8.0",
     "uglify-js-brunch": "~1.7.7",
     "auto-reload-brunch": "~1.7.3",
-    "css-brunch": "~1.7.0",
-    "react-brunch": "~1.0.6"
+    "css-brunch": "~1.7.0"
   }
 }

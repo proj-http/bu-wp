@@ -1,7 +1,12 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}{{ site.name }}{% endblock %}
+{% block title %}Home | Brooklyn United{% endblock %}
 
 {% block content %}
-  <div id="jsp"></div>
+  <h1>Brooklyn United Wordpress Scaffold</h1>
+  <ul>
+    {% for post in posts %}
+      <li><a href="/{{ post.name }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 {% endblock %}

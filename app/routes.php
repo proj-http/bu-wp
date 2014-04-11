@@ -1,14 +1,11 @@
 <?php
 
 use \App\Models\WPObject;
-use \App\Models\Blog;
 
-$blog = new Blog;
-
-$app->get('/', function() use ($app, $blog)
+$app->get('/', function() use ($app)
 {
   $posts = WPObject::find();
-  echo $app->twig->render('index.html.twig', ['posts' => $posts, 'site' => $blog]);
+  echo $app->twig->render('index.html.twig', ['posts' => $posts]);
 });
 
 $app->get('/:post_name', function($post_name) use ($app)

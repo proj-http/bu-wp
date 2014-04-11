@@ -16,18 +16,11 @@
   ],
   "dependencies": {
     "normalize-css": "~3.0.1",
-    "react": "~0.10.0",
-    "react-router-component": "~0.18.0",
-    "modernizr": "~2.7.2"
+    "showdown": "~0.3.1"
   },
   "overrides": {
-    "react": {
-      "main": [
-        "react-with-addons.js"
-      ]
-    },
-    "modernizr": {
-      "main": ["modernizr.js"]
+    "showdown": {
+      "main": ["src/showdown.js"]
     }
   }
 }
