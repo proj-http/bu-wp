@@ -4,3 +4,6 @@
 [submodule "public/content/plugins/advanced-custom-fields"]
 	path = public/content/plugins/advanced-custom-fields
 	url = git@github.com:elliotcondon/acf.git
+[submodule "public/content/classes/twitteroauth"]
+	path = public/content/classes/twitteroauth
+	url = https://github.com/abraham/twitteroauth.git
