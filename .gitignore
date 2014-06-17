@@ -1,5 +1,6 @@
 /vendor/
-/config/env/local.php
+/config/env/*
+!/config/env/sample.php
 /public/build/*
 node_modules
 bower_components
