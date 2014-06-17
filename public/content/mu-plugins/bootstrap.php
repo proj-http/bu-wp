@@ -9,12 +9,14 @@ use WPPlugins\WPExtend\ContentType;
 
 add_action('plugins_loaded', function () {
   $articles = new ContentType('articles', [
-    'singular_name' => 'Article',
     'supports' => ['editor', 'title', 'revisions', 'custom-fields', 'thumbnail']
+  ], [
+    'singular_name' => 'Article'
   ]);
 
   $projects = new ContentType('projects', [
-    'singular_name' => 'Projects',
     'supports' => ['editor', 'title', 'revisions', 'custom-fields', 'thumbnail']
+  ], [
+    'singular_name' => 'Project'
   ]);
 });
