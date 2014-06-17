@@ -3,7 +3,8 @@
     "require": {
         "slim/slim": "*",
         "twig/twig": "*",
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "illuminate/cache": "*"
     },
     "authors": [
         {
