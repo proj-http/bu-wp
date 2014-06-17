@@ -2,15 +2,17 @@
 
 class WPObject {
 
-  // use \App\Traits\PropertyExtract;
-
   public $ID;
+  public static $type;
   public $title;
   public $content;
   public $status;
-  public $type;
   public $date;
   public $name;
+  public $parent;
+
+  public static $meta = [];
+  public static $json = [];
 
   public function __construct($wp_post_array) {
     $this->extract($wp_post_array, [
@@ -19,8 +21,6 @@ class WPObject {
         }
     ]);
   }
-
-
     /**
      * Finds and creates WP objects using WP get_post and get_posts methods
      *
@@ -36,6 +36,27 @@ class WPObject {
         }
     }
 
+    public static function attachMetaData($wpobject)
+    {
+        $fields = get_fields($wpobject->ID);
+        if (! empty($fields)) {
+          $fieldObject = json_decode(json_encode($fields));
+            foreach ($fields as $key => $field) {
+                if ($field) $wpobject->{$key} = $field;
+            }
+        }
+
+        foreach(static::$meta as $prop) {
+            $meta = get_post_meta($wpobject->ID, $prop, true);
+            $wpobject->{$prop} = in_array($prop, static::$json) ? json_decode($meta) : $meta;
+        }
+
+
+
+        return $wpobject;
+    }
+
+
     /**
      * Handles creating a single post object
      *
@@ -44,11 +65,11 @@ class WPObject {
      */
     protected static function find_one($id) {
         $object = get_post($id);
-        $wpobject = new static($object);
-
+        $Klass = get_called_class();
+        $wpobject = new $Klass($object);
+        $Klass::attachMetaData($wpobject);
         return $wpobject;
     }
-
 
     /**
      * Find a set of objects based on arguments
@@ -57,11 +78,11 @@ class WPObject {
      * @return array       WPObject instances
      */
     protected static function find_many($args) {
+        $Klass = get_called_class();
 
-        return array_map(function ($object) {
-
-            return new static($object);
-
+        return array_map(function ($object) use($Klass) {
+            $wpobject = new $Klass($object);
+            return $Klass::attachMetaData($wpobject);
         }, get_posts($args));
     }
 
@@ -74,8 +95,15 @@ class WPObject {
      */
     public static function create($data) {
         unset($data['ID']);
+        $data = array_merge($data, ['post_type' => static::$type]);
         $object = static::find_one(wp_insert_post($data));
-
+        if (! empty(static::$meta)) {
+            foreach(static::$meta as $prop) {
+                if (in_array($prop, array_keys($data))) {
+                    update_post_meta($object->ID, $prop, $data[$prop]);
+                }
+            }
+        }
         return $object;
     }
 
@@ -90,6 +118,9 @@ class WPObject {
         foreach ($data as $k => $v) {
             if (property_exists($this, $k)) {
                 $this->$k = $v;
+            }
+            elseif (in_array($k, static::$meta)) {
+                update_post_meta($this->id, $prop, $data[$prop]);
             }
         }
         $data['ID'] = $this->ID;
@@ -109,6 +140,17 @@ class WPObject {
         return $this;
     }
 
+    /**
+     * An object version of PHP's core extract() function.
+     * This version pulls out all the elements of a hash and pushes them
+     * onto the object using $this->$key = $value syntax.
+     *
+     * @param array $properties The hash of properties
+     * @param array $modifier A list of callbacks to pass keys/values through if you want to modify, say to remove a prefix, etc
+     * @param boolean $ifExists Defaults to true, run every key in the hash through property_exists and only assign if the property was declared on the object
+     *
+     * @return null
+     */
     protected function extract($properties, $modifiers = [], $ifExists = true) {
         foreach ((array) $properties as $key => $value) {
 
@@ -118,9 +160,10 @@ class WPObject {
             if (!empty($modifiers['value']) && is_callable($modifiers['value'])) {
                 $value = $modifiers['value']($key, $value);
             }
-
+            if ($key === 'type') continue;
 
             if (!$ifExists || ($ifExists && property_exists($this, $key))) {
+
                 $this->$key = $value;
             }
         }
