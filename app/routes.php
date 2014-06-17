@@ -1,6 +1,8 @@
 <?php
 
 use \App\Models\WPObject;
+use \App\Models\Post;
+use \App\Models\Blog;
 
 $app->get('/', function() use ($app)
 {
