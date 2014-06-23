@@ -3,7 +3,8 @@
 define('WP_HOME', 'http://wordpress.dev');
 define('WP_SITEURL', WP_HOME . '/site/');
 
-define('WP_CONTENT_DIR', APP_ROOT . '/public/content');
+define('WP_PUBLIC_DIR', APP_ROOT . '/public');
+define('WP_CONTENT_DIR', WP_PUBLIC_DIR . '/content');
 define('WP_CONTENT_URL', WP_HOME . '/content');
 
 define('WP_DEBUG', true);

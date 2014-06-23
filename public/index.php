@@ -1,6 +1,7 @@
 <?php
 
 define('WP_USE_THEMES', false);
+define('WP_SYS_DIR', dirname(__DIR__));
 require('site/wp-blog-header.php');
 
 /** Instantiate Twig and Slim */

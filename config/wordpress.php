@@ -17,7 +17,6 @@
 define('APP_ROOT', dirname(__DIR__));
 define('APP_ENV', getenv('APPLICATION_ENV'));
 
-
 if (file_exists(APP_ROOT . '/config/env/local.php')) {
   require_once APP_ROOT . '/config/env/local.php';
 }
@@ -52,9 +51,9 @@ define('WPLANG', '');
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(dirname(__FILE__)) . '/public/site/');
+  define('ABSPATH', WP_PUBLIC_DIR . '/site/');
 
 /** Sets up WordPress vars and included files. */
 if (!class_exists('WP_CLI\Runner')) {
-  require_once(APP_ROOT . '/public/site/wp-settings.php');
+  require_once(WP_PUBLIC_DIR . '/site/wp-settings.php');
 }

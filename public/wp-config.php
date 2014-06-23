@@ -1,3 +1,3 @@
 <?php
 
-require_once dirname(__DIR__) . '/config/wordpress.php';
+require_once WP_SYS_DIR . '/config/wordpress.php';
